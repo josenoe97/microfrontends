@@ -1,5 +1,7 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit, signal } from '@angular/core';
+import { Chart,registerables } from 'chart.js';
+
+Chart.register(...registerables);
 
 @Component({
   selector: 'app-root',
@@ -7,6 +9,39 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
-export class App {
-  protected readonly title = signal('grafico');
+export class App implements OnInit {
+  ngOnInit(): void {
+    const dados = [
+      { categoria: 'Eletrônicos', valor: 10 },
+      { categoria: 'Roupas', valor: 15 },
+      { categoria: 'Decoração', valor: 5 },
+      { categoria: 'Ferramentas', valor: 20 },
+      { categoria: 'Acessórios', valor: 17 },
+    ];
+
+    const labels = dados.map(v => v.categoria);
+    const valores = dados.map(v => v.valor);
+
+    new Chart('barChart', {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: 'Categorias Mais Vendidas',
+            data: valores,
+            backgroundColor: 'rgb( 31, 82, 146, 0.6)'
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+          }
+        }
+      }
+    });
+  }
 }

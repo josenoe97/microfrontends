@@ -17,3 +17,5 @@ npx ng add @angular-architects/module-federation@20.0.0 --project grafico --port
 npx ng generate c home // para vendas(host)
 
 npx ng g c navbar // para vendas(host)
+
+npx ng add chart.js@4.5.1 //comando gráfico
