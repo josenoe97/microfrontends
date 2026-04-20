@@ -15,3 +15,5 @@ npx ng add @angular-architects/module-federation@20.0.0 --project produtos --por
 npx ng add @angular-architects/module-federation@20.0.0 --project grafico --port 4202 --type remote --skip-confirmation// microfrontend de grafico
 
 npx ng generate c home // para vendas(host)
+
+npx ng g c navbar // para vendas(host)
